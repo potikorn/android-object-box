@@ -5,4 +5,5 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="confirm_delete">Are you sure you want to delete this item?</string>
+    <string name="no_result">No Result</string>
 </resources>

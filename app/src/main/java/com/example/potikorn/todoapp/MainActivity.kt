@@ -2,12 +2,13 @@ package com.example.potikorn.todoapp
 
 import android.annotation.SuppressLint
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,6 +58,23 @@ class MainActivity : AppCompatActivity() {
         rvTodoLists.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = todoAdapter
+        }
+
+        etSearch.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                val enable = s.isNotEmpty()
+                btnSearch.isEnabled = enable
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+            override fun afterTextChanged(s: Editable) {}
+        })
+
+        btnSearch.setOnClickListener {
+            todoAdapter.items = todoBox.query()
+                    .contains(TodoModel_.topic, etSearch.text.trim().toString())
+                    .build().find()
         }
     }
 
