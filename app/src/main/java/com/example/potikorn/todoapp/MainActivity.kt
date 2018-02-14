@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var todoQuery: Query<TodoModel>
     private lateinit var subscription: DataSubscription
 
-    val todoAdapter: TodoAdapter by lazy { TodoAdapter() }
+    private val todoAdapter: TodoAdapter by lazy { TodoAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -125,6 +125,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 }
 

@@ -11,5 +11,4 @@ class ToDoApplication : Application() {
         super.onCreate()
         boxStore = MyObjectBox.builder().androidContext(this).build()
     }
-
 }
